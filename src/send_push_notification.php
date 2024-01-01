@@ -4,7 +4,7 @@ use Minishlink\WebPush\WebPush;
 use Minishlink\WebPush\Subscription;
 
 // here I'll get the subscription endpoint in the POST parameters
-// but in reality, you'll get this information in your database
+// but in reality, you'll get this information from your database
 // because you already stored it (cf. push_subscription.php)
 $subscription = Subscription::create(json_decode(file_get_contents('php://input'), true));
 
@@ -20,7 +20,7 @@ $webPush = new WebPush($auth);
 
 $report = $webPush->sendOneNotification(
     $subscription,
-    '{"message":"Hello! 👋"}',
+    '{"message":"Hello! 👋"}'
 );
 
 // handle eventual errors here, and remove the subscription from your server if it is expired
